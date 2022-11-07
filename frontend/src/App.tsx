@@ -1,15 +1,34 @@
+//import styles
+import { Container } from 'react-bootstrap';
 import './App.css';
+//import componenets
 import { Header, Footer } from './components';
+import { HomePage, ProductPage } from './pages';
+//import router
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-function App() {
+const App = () => {
   return (
-    <div className='App'>
+    <Router>
       <Header />
-      <h2>Hello to my pro shop</h2>
+      <Container className='py-5'>
+        <main>
+          <Routes>
+            <Route
+              path={'/'}
+              element={<HomePage />}
+            />
+            <Route
+              path={'/product/:id'}
+              element={<ProductPage />}
+            />
+          </Routes>
+        </main>
+      </Container>
 
       <Footer />
-    </div>
+    </Router>
   );
-}
+};
 
 export default App;
