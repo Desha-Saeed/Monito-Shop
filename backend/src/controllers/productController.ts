@@ -1,21 +1,29 @@
-import products from '../utils/products';
+import { Product } from '../models';
 import { Response, Request } from 'express';
+import asyncHandler from 'express-async-handler';
 
-//get all products
-export const getProducts = (req: Request, res: Response) => {
+// @desc    fetch all products
+// @route   GET /api/products
+// @access  Public
+
+export const getProducts = asyncHandler(async (req: Request, res: Response) => {
+  const products = await Product.find();
+
   res.status(200).json({
     status: 'success',
     data: {
       products
     }
   });
-};
+});
 
-//get single product
-export const getProduct = (req: Request, res: Response) => {
+// @desc     fetch a single product
+// @route    GET /api/products/:id
+// @access   Public
+export const getProduct = asyncHandler(async (req: Request, res: Response) => {
   const { id } = req.params;
 
-  const product = products.find((p) => p._id === id);
+  const product = await Product.findById(id);
 
   res.status(200).json({
     status: 'success',
@@ -23,4 +31,4 @@ export const getProduct = (req: Request, res: Response) => {
       product
     }
   });
-};
+});

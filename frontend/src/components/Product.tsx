@@ -14,7 +14,7 @@ interface ProductProps {
   category: string;
   price: number;
   countInStock: number;
-  rating: number;
+  avgRating: number;
   numReviews: number;
 }
 
@@ -36,7 +36,7 @@ const Product: React.FC<ProductProps> = (props: ProductProps) => {
           as='div'
           className='py-2'>
           <Ratings
-            value={props.rating}
+            value={props.avgRating}
             text={`${props.numReviews} reviews`}
           />
         </Card.Text>

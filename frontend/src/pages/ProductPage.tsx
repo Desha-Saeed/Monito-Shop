@@ -15,7 +15,7 @@ type product = {
   category: string;
   price: number;
   countInStock: number;
-  rating: number;
+  avgRating: number;
   numReviews: number;
 };
 
@@ -56,7 +56,7 @@ const ProductPage = (props: Props) => {
             <ListGroupItem as='h3'>{product?.name}</ListGroupItem>
             <div className='mx-3 my-1'>
               <Ratings
-                value={product.rating}
+                value={product.avgRating}
                 text={`${product.numReviews} reviews`}
               />
             </div>

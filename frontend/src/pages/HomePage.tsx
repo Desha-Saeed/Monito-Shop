@@ -15,7 +15,7 @@ type product = {
   category: string;
   price: number;
   countInStock: number;
-  rating: number;
+  avgRating: number;
   numReviews: number;
 };
 
