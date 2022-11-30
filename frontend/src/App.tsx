@@ -3,7 +3,7 @@ import { Container } from 'react-bootstrap';
 import './App.css';
 //import componenets
 import { Header, Footer } from './components';
-import { HomePage, ProductPage } from './pages';
+import { HomePage, ProductPage, CartPage } from './pages';
 //import router
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -22,6 +22,18 @@ const App = () => {
               path={'/product/:id'}
               element={<ProductPage />}
             />
+            <Route
+              path={'/cart'}
+              element={<CartPage />}>
+              <Route
+                path={':id'}
+                element={<CartPage />}
+              />
+              <Route
+                path={'?qty=:qty'}
+                element={<CartPage />}
+              />
+            </Route>
           </Routes>
         </main>
       </Container>

@@ -5,9 +5,10 @@ export type product = {
   brand?: string;
   category?: string;
   price?: number;
-  countInStock?: number;
+  InStock?: number;
   avgRating?: number;
   numReviews?: number;
+  quantity: number;
 };
 
 const products: product[] = [
@@ -19,9 +20,10 @@ const products: product[] = [
     brand: 'Apple',
     category: 'Electronics',
     price: 89.99,
-    countInStock: 10,
+    InStock: 10,
     avgRating: 4.5,
-    numReviews: 12
+    numReviews: 12,
+    quantity: 1
   },
   {
     name: 'iPhone 11 Pro 256GB Memory',
@@ -31,9 +33,10 @@ const products: product[] = [
     brand: 'Apple',
     category: 'Electronics',
     price: 599.99,
-    countInStock: 7,
+    InStock: 7,
     avgRating: 4.0,
-    numReviews: 8
+    numReviews: 8,
+    quantity: 1
   },
   {
     name: 'Cannon EOS 80D DSLR Camera',
@@ -43,9 +46,10 @@ const products: product[] = [
     brand: 'Cannon',
     category: 'Electronics',
     price: 929.99,
-    countInStock: 5,
+    InStock: 5,
     avgRating: 3,
-    numReviews: 12
+    numReviews: 12,
+    quantity: 1
   },
   {
     name: 'Sony Playstation 4 Pro White Version',
@@ -55,9 +59,10 @@ const products: product[] = [
     brand: 'Sony',
     category: 'Electronics',
     price: 399.99,
-    countInStock: 11,
+    InStock: 11,
     avgRating: 5,
-    numReviews: 12
+    numReviews: 12,
+    quantity: 1
   },
   {
     name: 'Logitech G-Series Gaming Mouse',
@@ -67,9 +72,10 @@ const products: product[] = [
     brand: 'Logitech',
     category: 'Electronics',
     price: 49.99,
-    countInStock: 7,
+    InStock: 7,
     avgRating: 3.5,
-    numReviews: 10
+    numReviews: 10,
+    quantity: 1
   },
   {
     name: 'Amazon Echo Dot 3rd Generation',
@@ -79,9 +85,10 @@ const products: product[] = [
     brand: 'Amazon',
     category: 'Electronics',
     price: 29.99,
-    countInStock: 0,
+    InStock: 0,
     avgRating: 4,
-    numReviews: 12
+    numReviews: 12,
+    quantity: 1
   }
 ];
 

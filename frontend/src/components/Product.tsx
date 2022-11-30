@@ -13,7 +13,7 @@ interface ProductProps {
   brand: string;
   category: string;
   price: number;
-  countInStock: number;
+  InStock: number;
   avgRating: number;
   numReviews: number;
 }

@@ -1,54 +1,39 @@
 //import hooks
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useEffect } from 'react';
 //import bootstrap
 import { Col, Row } from 'react-bootstrap';
 //import components
-import { Product } from '../components';
-
-type product = {
-  _id: string;
-  name: string;
-  image: string;
-  description: string;
-  brand: string;
-  category: string;
-  price: number;
-  countInStock: number;
-  avgRating: number;
-  numReviews: number;
-};
+import { Product, Loader } from '../components';
+import { fetchProductList } from '../redux/slices/productList-slice';
+import { useAppDispatch, useAppSelector } from '../hooks/reduxHooks';
+import { selectProducts } from '../redux/slices/productList-slice';
+import { RootState } from '../redux/store';
 
 const HomePage = () => {
-  //products state
-  const [products, setProducts] = useState<product[]>([]);
+  const dispatch = useAppDispatch();
+  const products = useAppSelector(selectProducts);
+  const { status } = useAppSelector((state: RootState) => state.productList);
 
   //fetch products
   useEffect(() => {
-    const fetchProducts = async () => {
-      const { data } = await axios.get('./api/products');
+    dispatch(fetchProductList());
+  }, [dispatch]);
 
-      setProducts(data.data.products);
-    };
-
-    fetchProducts();
-  }, []);
+  const productList = products.map((product) => (
+    <Col
+      sm={12}
+      md={6}
+      lg={4}
+      xl={3}
+      key={product._id}>
+      <Product {...product} />
+    </Col>
+  ));
 
   return (
     <>
       <h1>Latest Products</h1>
-      <Row>
-        {products.map((product) => (
-          <Col
-            sm={12}
-            md={6}
-            lg={4}
-            xl={3}
-            key={product._id}>
-            <Product {...product} />
-          </Col>
-        ))}
-      </Row>
+      <Row>{status === 'idle' ? productList : <Loader />}</Row>
     </>
   );
 };
