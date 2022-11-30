@@ -64,7 +64,11 @@ const productSchema = new Schema(
       required: true,
       default: 0
     },
-
+    quantity: {
+      type: Number,
+      required: true,
+      default: 0
+    },
     InStock: {
       type: Number,
       required: true,
